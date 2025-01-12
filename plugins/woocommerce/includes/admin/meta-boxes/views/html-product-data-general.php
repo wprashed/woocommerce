@@ -205,3 +205,12 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_product_options_general_product_data' ); ?>
 </div>
+<?php
+// Add an input field for the estimated delivery date in the product settings
+?>
+<p class="form-field">
+    <label for="estimated_delivery_date"><?php esc_html_e('Estimated Delivery Date', 'woocommerce'); ?></label>
+    <input type="date" class="short" name="_estimated_delivery_date" id="estimated_delivery_date" 
+           value="<?php echo esc_attr(get_post_meta($post->ID, '_estimated_delivery_date', true)); ?>" />
+    <span class="description"><?php esc_html_e('Set the estimated delivery date for this product.', 'woocommerce'); ?></span>
+</p>
