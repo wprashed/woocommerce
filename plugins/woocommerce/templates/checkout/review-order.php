@@ -108,3 +108,18 @@ defined( 'ABSPATH' ) || exit;
 
 	</tfoot>
 </table>
+
+<?php
+// Loop through order items to display the estimated delivery date for each product
+foreach (WC()->cart->get_cart() as $cart_item) {
+    $product_id = $cart_item['product_id'];
+    $estimated_delivery_date = get_post_meta($product_id, '_estimated_delivery_date', true);
+
+    if ($estimated_delivery_date) {
+        echo '<p class="checkout-estimated-delivery">' . 
+             sprintf(esc_html__('Estimated Delivery Date: %s', 'woocommerce'), 
+             esc_html($estimated_delivery_date)) . 
+             '</p>';
+    }
+}
+?>
