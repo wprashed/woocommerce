@@ -40,3 +40,15 @@ global $product;
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 
 </div>
+<?php
+// Fetch the estimated delivery date for the current product
+$estimated_delivery_date = get_post_meta(get_the_ID(), '_estimated_delivery_date', true);
+
+// Display the estimated delivery date if it exists
+if ($estimated_delivery_date) {
+    echo '<p class="estimated-delivery-date">' . 
+         sprintf(esc_html__('Estimated Delivery Date: %s', 'woocommerce'), 
+         esc_html($estimated_delivery_date)) . 
+         '</p>';
+}
+?>
