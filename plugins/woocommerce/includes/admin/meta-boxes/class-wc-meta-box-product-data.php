@@ -580,3 +580,8 @@ class WC_Meta_Box_Product_Data {
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 }
+
+// Save the estimated delivery date when saving the product
+if (isset($_POST['_estimated_delivery_date'])) {
+    update_post_meta($post_id, '_estimated_delivery_date', wc_clean($_POST['_estimated_delivery_date']));
+}
